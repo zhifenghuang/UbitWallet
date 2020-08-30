@@ -17,7 +17,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,13 +29,14 @@ import com.ubit.wallet.R;
 import com.ubit.wallet.dialog.CommonProgressDialog;
 import com.ubit.wallet.dialog.MyDialogFragment;
 import com.ubit.wallet.fragment.BaseFragment;
+import com.ubit.wallet.http.OnHttpErrorListener;
 import com.ubit.wallet.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements OnHttpErrorListener {
 
     private DisplayMetrics mDisplaymetrics;
 
@@ -46,15 +46,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean mIsActivityFinish;
 
     private static final ArrayList<BaseActivity> mActivityList = new ArrayList<>();
-
-//    protected ArrayList<UserBean> mFriendList;
-//    protected ArrayList<GroupBean> mGroupList;
-//
-//    private boolean mIsGetFriend;
-//    private boolean mIsGetGroup;
-
-//    protected ChatListFragment mChatListFragment;
-//    protected FriendListFragment mFriendListFragment;
 
 
     @Override
@@ -189,30 +180,30 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void errorCodeDo(final int errorCode, final String message) {
-//        if (!TextUtils.isEmpty(message)) {
-//            mErrorDialog = new MyDialogFragment(R.layout.layout_one_btn_dialog);
-//            mErrorDialog.setOnMyDialogListener(new MyDialogFragment.OnMyDialogListener() {
-//                @Override
-//                public void initView(View view) {
-//                    view.findViewById(R.id.tv1).setVisibility(View.GONE);
-//                    ((TextView) view.findViewById(R.id.tv2)).setText(message);
-//                    ((TextView) view.findViewById(R.id.btn2)).setText(getString(R.string.chat_ok));
-//                    mErrorDialog.setDialogViewsOnClickListener(view, R.id.btn2);
-//                }
-//
-//                @Override
-//                public void onViewClick(int viewId) {
-//
-//                }
-//            });
-//            mErrorDialog.show(getSupportFragmentManager(), "MyDialogFragment");
-//            mErrorDialog.setOnDismiss(new MyDialogFragment.IDismissListener() {
-//                @Override
-//                public void onDismiss() {
-//
-//                }
-//            });
-//        }
+        if (!TextUtils.isEmpty(message)) {
+            mErrorDialog = new MyDialogFragment(R.layout.layout_one_btn_dialog);
+            mErrorDialog.setOnMyDialogListener(new MyDialogFragment.OnMyDialogListener() {
+                @Override
+                public void initView(View view) {
+                    view.findViewById(R.id.tv1).setVisibility(View.GONE);
+                    ((TextView) view.findViewById(R.id.tv2)).setText(message);
+                    ((TextView) view.findViewById(R.id.btn2)).setText(getString(R.string.app_ok));
+                    mErrorDialog.setDialogViewsOnClickListener(view, R.id.btn2);
+                }
+
+                @Override
+                public void onViewClick(int viewId) {
+
+                }
+            });
+            mErrorDialog.show(getSupportFragmentManager(), "MyDialogFragment");
+            mErrorDialog.setOnDismiss(new MyDialogFragment.IDismissListener() {
+                @Override
+                public void onDismiss() {
+
+                }
+            });
+        }
     }
 
     /**
@@ -414,6 +405,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+    }
+
+    @Override
+    public synchronized void onServerError(int errorCode, String errorMsg) {
+        if (errorCode == 401) {
+            //          ConfigManager.getInstance().showLoginOutDialog();
+            return;
+        }
+        errorCodeDo(errorCode, errorMsg);
+    }
+
+    @Override
+    public void onConnectError(Throwable e) {
+        showToast(R.string.app_net_work_error);
     }
 
 }

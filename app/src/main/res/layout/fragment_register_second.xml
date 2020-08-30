@@ -98,7 +98,7 @@
         android:layout_marginRight="30dp"
         android:background="@null"
         android:gravity="center_vertical"
-        android:hint="@string/app_please_check_password"
+        android:hint="@string/app_please_input_check_password"
         android:inputType="textPassword"
         android:singleLine="true"
         android:textColor="@color/color_00_00_00"
@@ -183,13 +183,14 @@
 
 
         <ImageView
+            android:id="@+id/ivCaptcha"
             android:layout_width="81dp"
             android:layout_height="31dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="9dp"
             android:background="@drawable/shape_stroke_b2b2b2_2"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+            android:padding="1dp"
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/tvChange"

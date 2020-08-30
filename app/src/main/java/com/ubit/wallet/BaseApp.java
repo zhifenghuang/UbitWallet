@@ -3,6 +3,7 @@ package com.ubit.wallet;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,10 +17,16 @@ public class BaseApp extends Application {
 
     private int mActivityRecord;  //记录app是否处于app页面，0表示不在，1表示在
 
+    private static Context mContext;
+
+    public static Context getContext(){
+        return mContext;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        mContext=this;
  //       CrashReport.initCrashReport(getApplicationContext(), "02cfa38619", false);
         mActivityRecord = 0;
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {

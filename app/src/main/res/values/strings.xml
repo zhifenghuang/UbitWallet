@@ -14,18 +14,26 @@
     <string name="app_forget_password">忘记密码？</string>
     <string name="app_picture_ver_code">图片验证码</string>
     <string name="app_change_one">换一张</string>
+    <string name="app_net_work_error">您的网络异常，请稍后再试！</string>
 
     <!-- RegisterFragment -->
     <string name="app_ver_code">验证码</string>
     <string name="app_please_input_ver_code">请输入验证码</string>
     <string name="app_next_step">下一步</string>
     <string name="app_input_again">再次输入</string>
-    <string name="app_please_check_password">请确认密码</string>
+    <string name="app_please_input_check_password">请输入确认密码</string>
+    <string name="app_password_not_equal_check_password">密码与确认密码不一致</string>
     <string name="app_invite_code">邀请码</string>
     <string name="app_optional">选填</string>
     <string name="app_sure">确认</string>
+    <string name="app_ok">确定</string>
 
     <!-- ForgetPasswordFragment -->
     <string name="app_get_ver_code">获取验证码</string>
     <string name="app_message_resend">重新获取</string>
+    <string name="app_new_password">新密码</string>
+    <string name="app_check_new_password">确认新密码</string>
+    <string name="app_please_input_new_password">请输入新密码</string>
+    <string name="app_please_input_check_new_password">请输入确认新密码</string>
+    <string name="app_reset_password_success">设置新密码成功</string>
 </resources>

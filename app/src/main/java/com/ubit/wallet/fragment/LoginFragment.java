@@ -1,15 +1,31 @@
 package com.ubit.wallet.fragment;
 
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.ubit.wallet.R;
+import com.ubit.wallet.activity.BaseActivity;
+import com.ubit.wallet.bean.PhoneCodeBean;
+import com.ubit.wallet.bean.PicCodeResultBean;
+import com.ubit.wallet.http.HttpMethods;
+import com.ubit.wallet.http.HttpObserver;
+import com.ubit.wallet.http.OnHttpErrorListener;
+import com.ubit.wallet.http.SubscriberOnNextListener;
+import com.ubit.wallet.utils.BitmapUtil;
+import com.ubit.wallet.utils.MD5Utils;
 
 public class LoginFragment extends BaseFragment {
 
     private int mLoginType = 0;  //0是手机号登录，1是邮箱登录
+
+    private String mSid;
+
+    private String mPhoneCode = "86";
 
     @Override
     protected int getLayoutId() {
@@ -18,7 +34,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     protected void onViewCreated(View view) {
-        setViewsOnClickListener(R.id.tvRight, R.id.tvLogin,R.id.tvForgetPassword);
+        setViewsOnClickListener(R.id.tvRight, R.id.tvLogin, R.id.tvForgetPassword, R.id.tvChange);
         ((RadioGroup) view.findViewById(R.id.rGroup)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -37,6 +53,14 @@ public class LoginFragment extends BaseFragment {
                 }
             }
         });
+        getCaptcha();
+
+        HttpMethods.getInstance().get_codes("2", new HttpObserver(new SubscriberOnNextListener<PhoneCodeBean>() {
+            @Override
+            public void onNext(PhoneCodeBean bean, String msg) {
+
+            }
+        }, getActivity(), false, (BaseActivity) getActivity()));
     }
 
     @Override
@@ -52,10 +76,86 @@ public class LoginFragment extends BaseFragment {
                 gotoPager(RegisterFirstFragment.class);
                 break;
             case R.id.tvLogin:
+                if (TextUtils.isEmpty(mSid)) {
+                    getCaptcha();
+                    return;
+                }
+                String name;
+                if (mLoginType == 0) {
+                    name = getTextById(R.id.etMobile);
+                    if (TextUtils.isEmpty(name)) {
+                        showToast(R.string.app_please_input_mobile);
+                        return;
+                    }
+                } else {
+                    name = getTextById(R.id.etEmail);
+                    if (TextUtils.isEmpty(name)) {
+                        showToast(R.string.app_please_input_email);
+                        return;
+                    }
+                }
+                String password = getTextById(R.id.etPassword);
+                if (TextUtils.isEmpty(password)) {
+                    showToast(R.string.app_please_input_password);
+                    return;
+                }
+                String code = getTextById(R.id.etPicVerCode);
+                if (TextUtils.isEmpty(code)) {
+                    showToast(R.string.app_please_input_pic_ver_code);
+                    return;
+                }
+                HttpMethods.getInstance().login(name, MD5Utils.encryptMD5(password), code, mSid, mPhoneCode,
+                        new HttpObserver(new SubscriberOnNextListener() {
+                            @Override
+                            public void onNext(Object o, String msg) {
+                                if (getActivity() == null || getView() == null) {
+                                    return;
+                                }
+                            }
+                        }, getActivity(), new OnHttpErrorListener() {
+                            @Override
+                            public void onConnectError(Throwable e) {
+                                if (getActivity() == null || getView() == null) {
+                                    return;
+                                }
+                                showToast(R.string.app_net_work_error);
+                                getCaptcha();
+                            }
+
+                            @Override
+                            public void onServerError(int errorCode, String errorMsg) {
+                                if (getActivity() == null || getView() == null) {
+                                    return;
+                                }
+                                if (!TextUtils.isEmpty(errorMsg)) {
+                                    ((BaseActivity) getActivity()).errorCodeDo(errorCode, errorMsg);
+                                }
+                                getCaptcha();
+                            }
+                        }));
                 break;
             case R.id.tvForgetPassword:
                 gotoPager(ForgetPasswordFragment.class);
                 break;
+            case R.id.tvChange:
+                getCaptcha();
+                break;
         }
+    }
+
+    private void getCaptcha() {
+        HttpMethods.getInstance().captcha(new HttpObserver(new SubscriberOnNextListener<PicCodeResultBean>() {
+            @Override
+            public void onNext(PicCodeResultBean bean, String msg) {
+                if (getActivity() == null || getView() == null) {
+                    return;
+                }
+                if (bean != null) {
+                    Bitmap bitmap = BitmapUtil.base64ToBitmap(bean.getCode());
+                    ((ImageView) fv(R.id.ivCaptcha)).setImageBitmap(bitmap);
+                    mSid = bean.getSid();
+                }
+            }
+        }, getActivity(), (BaseActivity) getActivity()));
     }
 }

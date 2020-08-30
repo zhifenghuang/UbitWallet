@@ -144,6 +144,7 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:hint="@string/app_please_input_email"
+        android:inputType="textEmailAddress"
         android:singleLine="true"
         android:textColor="@color/color_00_00_00"
         android:textColorHint="@color/color_b2_b2_b2"
@@ -169,22 +170,43 @@
         android:textSize="14dp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/etVerCode"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_marginLeft="31dp"
         android:layout_marginTop="3dp"
-        android:layout_marginRight="30dp"
-        android:background="@null"
-        android:gravity="center_vertical"
-        android:hint="@string/app_please_input_ver_code"
-        android:inputType="number"
-        android:singleLine="true"
-        android:textColor="@color/color_00_00_00"
-        android:textColorHint="@color/color_b2_b2_b2"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:paddingLeft="31dp"
+        android:paddingRight="30dp">
+
+        <EditText
+            android:id="@+id/etVerCode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/app_please_input_ver_code"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textColor="@color/color_00_00_00"
+            android:textColorHint="@color/color_b2_b2_b2"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/tvGetCode"
+            android:layout_width="94dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/shape_stroke_00_cf7c_12"
+            android:gravity="center"
+            android:text="@string/app_get_ver_code"
+            android:textColor="@color/color_00_cf_7c"
+            android:textSize="12dp" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
