@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivCoinIcon"
+        android:layout_marginTop="-39dp"
+        android:background="@drawable/shape_ffffff_8"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="58dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="36dp">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/app_xxx_address"
+            android:textColor="@color/color_66_66_66"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="30dp"
+            android:text="1FyMtiZtiZtiZtiZkeossssaroZh4AVz"
+            android:textColor="@color/color_9b_9b_9b"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/ivQrCode"
+            android:layout_width="229dp"
+            android:layout_height="229dp"
+            android:layout_gravity="center_horizontal" />
+
+
+        <TextView
+            android:id="@+id/tvCopy"
+            android:layout_width="210dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/shape_00cf7c_4"
+            android:gravity="center"
+            android:text="@string/app_copy_address"
+            android:textColor="@color/color_ff_ff_ff"
+            android:textSize="17dp" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivCoinIcon"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:background="@drawable/shape_white_circle"
+        android:src="@drawable/app_eth" />
+
+
+</RelativeLayout>

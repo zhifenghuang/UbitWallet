@@ -99,7 +99,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     protected void setImage(int id, int drawableId) {
-        ImageView iv = (ImageView) getView().findViewById(id);
+        ImageView iv = getView().findViewById(id);
         iv.setImageResource(drawableId);
     }
 

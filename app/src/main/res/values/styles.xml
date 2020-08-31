@@ -27,4 +27,8 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <dimen name="toolbar_height">45dp</dimen>
+    <dimen name="maxAddressWidth">150dp</dimen>
+    <dimen name="loading_width">15dp</dimen>
+
 </resources>

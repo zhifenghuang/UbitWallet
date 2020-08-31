@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="23dp"
+        android:layout_gravity="right"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/app_triangle_top_ffffff" />
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_wallet_filter_record"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAll"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/app_all"
+                android:textColor="@color/color_b2_b2_b2"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tvTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/color_b2_b2_b2"
+                android:gravity="center"
+                android:text="@string/app_transfer"
+                android:textColor="@color/color_00_00_00"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tvCollect"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/app_collect"
+                android:textColor="@color/color_b2_b2_b2"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tvProfit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/app_profit"
+                android:textColor="@color/color_b2_b2_b2"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/paddingView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -20,6 +20,10 @@ android {
         versionName "1.0.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi','armeabi-v7a'
+        }
     }
 
     buildTypes {
@@ -77,5 +81,8 @@ dependencies {
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     api 'com.squareup.okhttp3:okhttp:4.8.0'
     api 'com.squareup.okio:okio:2.7.0'
+
+    api 'com.yangy:YZxing-lib:2.1'
+    api 'com.blankj:utilcodex:1.26.0'
 
 }

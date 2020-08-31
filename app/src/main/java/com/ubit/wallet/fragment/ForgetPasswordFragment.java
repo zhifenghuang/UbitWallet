@@ -8,9 +8,11 @@ import android.widget.RadioGroup;
 
 import com.ubit.wallet.R;
 import com.ubit.wallet.activity.BaseActivity;
+import com.ubit.wallet.bean.PhoneCodeBean;
 import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
 import com.ubit.wallet.http.SubscriberOnNextListener;
+import com.ubit.wallet.manager.DataManager;
 import com.ubit.wallet.utils.CountDownUtil;
 import com.ubit.wallet.utils.MD5Utils;
 
@@ -31,7 +33,7 @@ public class ForgetPasswordFragment extends BaseFragment {
 
     @Override
     protected void onViewCreated(View view) {
-        setViewsOnClickListener(R.id.tvRight, R.id.tvGetCode, R.id.tvOk);
+        setViewsOnClickListener(R.id.tvRight, R.id.tvGetCode, R.id.tvOk, R.id.tvPhoneCode);
         ((RadioGroup) view.findViewById(R.id.rGroup)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -58,9 +60,23 @@ public class ForgetPasswordFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Object object = DataManager.getInstance().getObject();
+        if (object instanceof PhoneCodeBean.CodeBean) {
+            mPhoneCode = String.valueOf(((PhoneCodeBean.CodeBean) object).getCode());
+            setText(R.id.tvPhoneCode, "+" + mPhoneCode);
+        }
+        DataManager.getInstance().setObject(null);
+    }
+
+    @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+            case R.id.tvPhoneCode:
+                gotoPager(SelectCountryCodeFragment.class);
+                break;
             case R.id.tvGetCode:
                 if (mGetVerCodeType == 1) {
                     String phone = getTextById(R.id.etMobile);
@@ -156,7 +172,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                 .setHintAfterText("s")
                 .setCountDownHint(getString(R.string.app_message_resend))
                 .setCountDownColor(R.color.color_00_cf_7c, R.color.color_b2_b2_b2)
-                .setCountDownBackgroundColor(R.drawable.shape_stroke_00_cf7c_12, R.drawable.shape_stroke_b2b2b2_12)
+                .setCountDownBackgroundColor(R.drawable.shape_stroke_00cf7c_12, R.drawable.shape_stroke_b2b2b2_12)
                 .setOnTimeListener(new CountDownUtil.OnTimeFinishListener() {
                     @Override
                     public void onTimeFinish() {

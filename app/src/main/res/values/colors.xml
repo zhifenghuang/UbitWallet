@@ -97,4 +97,12 @@
     <color name="color_27_77_ff">#2777FF</color>
     <color name="color_28_78_ff">#2878FF</color>
     <color name="color_00_cf_7c">#00CF7C</color>
+    <color name="color_00_d0_7c">#00D07C</color>
+
+    <!-- zxing -->
+    <color name="zxing_capture_text_cover_bg">#99535353</color>
+    <color name="zxing_viewfinder_mask">#60000000</color>
+    <color name="zxing_lightgreen">#99CC33</color>
+    <color name="zxing_green">#00CC00</color>
+    <color name="zxing_result_view">#b0000000</color>
 </resources>

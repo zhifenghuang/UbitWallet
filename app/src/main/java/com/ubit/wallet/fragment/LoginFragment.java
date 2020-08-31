@@ -10,12 +10,15 @@ import android.widget.RadioGroup;
 
 import com.ubit.wallet.R;
 import com.ubit.wallet.activity.BaseActivity;
+import com.ubit.wallet.activity.MainActivity;
 import com.ubit.wallet.bean.PhoneCodeBean;
 import com.ubit.wallet.bean.PicCodeResultBean;
+import com.ubit.wallet.bean.UserBean;
 import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
 import com.ubit.wallet.http.OnHttpErrorListener;
 import com.ubit.wallet.http.SubscriberOnNextListener;
+import com.ubit.wallet.manager.DataManager;
 import com.ubit.wallet.utils.BitmapUtil;
 import com.ubit.wallet.utils.MD5Utils;
 
@@ -34,7 +37,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     protected void onViewCreated(View view) {
-        setViewsOnClickListener(R.id.tvRight, R.id.tvLogin, R.id.tvForgetPassword, R.id.tvChange);
+        setViewsOnClickListener(R.id.tvRight, R.id.tvLogin, R.id.tvForgetPassword, R.id.tvChange, R.id.tvPhoneCode);
         ((RadioGroup) view.findViewById(R.id.rGroup)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -54,13 +57,17 @@ public class LoginFragment extends BaseFragment {
             }
         });
         getCaptcha();
+    }
 
-        HttpMethods.getInstance().get_codes("2", new HttpObserver(new SubscriberOnNextListener<PhoneCodeBean>() {
-            @Override
-            public void onNext(PhoneCodeBean bean, String msg) {
-
-            }
-        }, getActivity(), false, (BaseActivity) getActivity()));
+    @Override
+    public void onResume() {
+        super.onResume();
+        Object object = DataManager.getInstance().getObject();
+        if (object instanceof PhoneCodeBean.CodeBean) {
+            mPhoneCode = String.valueOf(((PhoneCodeBean.CodeBean) object).getCode());
+            setText(R.id.tvPhoneCode, "+" + mPhoneCode);
+        }
+        DataManager.getInstance().setObject(null);
     }
 
     @Override
@@ -72,6 +79,9 @@ public class LoginFragment extends BaseFragment {
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+            case R.id.tvPhoneCode:
+                gotoPager(SelectCountryCodeFragment.class);
+                break;
             case R.id.tvRight:
                 gotoPager(RegisterFirstFragment.class);
                 break;
@@ -105,12 +115,15 @@ public class LoginFragment extends BaseFragment {
                     return;
                 }
                 HttpMethods.getInstance().login(name, MD5Utils.encryptMD5(password), code, mSid, mPhoneCode,
-                        new HttpObserver(new SubscriberOnNextListener() {
+                        new HttpObserver(new SubscriberOnNextListener<UserBean>() {
                             @Override
-                            public void onNext(Object o, String msg) {
+                            public void onNext(UserBean bean, String msg) {
                                 if (getActivity() == null || getView() == null) {
                                     return;
                                 }
+                                DataManager.getInstance().saveMyInfo(bean);
+                                gotoPager(MainActivity.class);
+                                ((BaseActivity) getActivity()).finishAllActivity();
                             }
                         }, getActivity(), new OnHttpErrorListener() {
                             @Override

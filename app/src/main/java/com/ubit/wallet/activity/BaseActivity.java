@@ -263,18 +263,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnHttpEr
         return null;
     }
 
-    public void onResume() {
-        super.onResume();
-//        if (mChatListFragment != null) {
-//            mFriendList = DataManager.getInstance().getFriends();
-//            mGroupList = DataManager.getInstance().getGroups();
-//            mChatListFragment.setData(mFriendList, mGroupList);
-//            if (mFriendListFragment != null) {
-//                mFriendListFragment.setData(mFriendList);
-//            }
-//        }
-    }
-
     public void onDestroy() {
         super.onDestroy();
         mActivityList.remove(this);

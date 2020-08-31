@@ -1,6 +1,8 @@
 package com.ubit.wallet.utils;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
@@ -820,6 +823,47 @@ public class Utils {
             return "VI";
         }
         return "ZH";
+    }
+
+    /**
+     * 获取扫描后的url，特殊处理im
+     *
+     * @param url
+     * @return
+     */
+    public static String getScanUrl(String url) {
+        if (url.startsWith("ethereum:")) {
+            String result = url.replace("ethereum:", "");
+            if (result.contains("?")) {
+                String[] arr = result.split("\\?");
+                return arr[0];
+            }
+        } else if (url.startsWith("bitcoin:")) {
+            String result = url.replace("bitcoin:", "");
+            if (result.contains("?")) {
+                String[] arr = result.split("\\?");
+                return arr[0];
+            }
+        }
+        return url;
+    }
+
+    /**
+     * 复制
+     *
+     * @param context context
+     * @param content 内容
+     */
+    public static void copyData(Context context, String content) {
+        if (TextUtils.isEmpty(content)) {
+            return;
+        }
+        //获取剪贴板管理器：
+        ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+// 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("Label", content);
+// 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
     }
 }
 

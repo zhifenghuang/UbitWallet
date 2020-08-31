@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.ubit.wallet.manager.Preferences;
+
 /**
  *
  */
@@ -27,6 +29,7 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         mContext=this;
+        Preferences.getInstacne().setContext(this);
  //       CrashReport.initCrashReport(getApplicationContext(), "02cfa38619", false);
         mActivityRecord = 0;
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {

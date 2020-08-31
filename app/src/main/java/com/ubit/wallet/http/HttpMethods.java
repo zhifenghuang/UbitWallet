@@ -192,6 +192,53 @@ public class HttpMethods {
         toSubscribe(observable, observer);
     }
 
+    /**
+     * @param token
+     * @param observer
+     */
+    public void get_assets(String token, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.get_assets(token);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     * @param token
+     * @param observer
+     */
+    public void get_fee(String token, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.get_fee(token);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     * @param token
+     * @param observer
+     */
+    public void get_user(String token, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.get_user(token);
+        toSubscribe(observable, observer);
+    }
+
+
+    /**
+     * @param token
+     * @param amount
+     * @param to_address
+     * @param from_address
+     * @param symbol       币种类型（1.tth 2.eth 3.erc20 4.omni 5.btc）
+     * @param fee
+     * @param observer
+     */
+    public void transfer(String token, String amount, String to_address, String from_address,
+                         String symbol, String fee, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.transfer(token, amount, to_address, from_address, symbol, fee);
+        toSubscribe(observable, observer);
+    }
+
 
     private <T> void toSubscribe(Observable<T> o, HttpObserver s) {
         o.retry(2, new Predicate<Throwable>() {

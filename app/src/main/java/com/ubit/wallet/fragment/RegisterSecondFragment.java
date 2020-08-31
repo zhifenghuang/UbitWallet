@@ -9,6 +9,7 @@ import com.ubit.wallet.R;
 import com.ubit.wallet.activity.BaseActivity;
 import com.ubit.wallet.activity.MainActivity;
 import com.ubit.wallet.bean.PicCodeResultBean;
+import com.ubit.wallet.bean.UserBean;
 import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
 import com.ubit.wallet.http.OnHttpErrorListener;
@@ -80,9 +81,9 @@ public class RegisterSecondFragment extends BaseFragment {
                 }
                 String password = MD5Utils.encryptMD5(password1);
                 HttpMethods.getInstance().register2(mUserId, password, password, inviteCode, picVerCode, mSid,
-                        new HttpObserver(new SubscriberOnNextListener() {
+                        new HttpObserver(new SubscriberOnNextListener<UserBean>() {
                             @Override
-                            public void onNext(Object o, String msg) {
+                            public void onNext(UserBean bean, String msg) {
                                 if (getActivity() == null || getView() == null) {
                                     return;
                                 }
