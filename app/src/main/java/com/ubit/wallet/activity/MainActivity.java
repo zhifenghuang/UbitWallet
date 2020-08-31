@@ -16,6 +16,7 @@ import com.ubit.wallet.bean.AssetsBean;
 import com.ubit.wallet.bean.UserInfoBean;
 import com.ubit.wallet.fragment.AssetsFragment;
 import com.ubit.wallet.fragment.BaseFragment;
+import com.ubit.wallet.fragment.MyFragment;
 import com.ubit.wallet.fragment.QuotationFragment;
 import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
@@ -44,7 +45,7 @@ public class MainActivity extends BaseActivity {
         mBaseFragment.add(new QuotationFragment());
         mBaseFragment.add(new QuotationFragment());
         mBaseFragment.add(new QuotationFragment());
-        mBaseFragment.add(new QuotationFragment());
+        mBaseFragment.add(new MyFragment());
     }
 
     public void onResume() {

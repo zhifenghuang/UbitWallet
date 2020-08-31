@@ -98,6 +98,7 @@
     <color name="color_28_78_ff">#2878FF</color>
     <color name="color_00_cf_7c">#00CF7C</color>
     <color name="color_00_d0_7c">#00D07C</color>
+    <color name="color_0e_16_2d">#0E162D</color>
 
     <!-- zxing -->
     <color name="zxing_capture_text_cover_bg">#99535353</color>

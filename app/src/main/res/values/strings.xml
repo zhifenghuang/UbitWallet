@@ -107,4 +107,45 @@
     <string name="app_input_receive_url">请输入接收地址</string>
     <string name="app_min_transfer_money">TTH转账金额不能少于110</string>
     <string name="app_money_number">请输入正确的金额</string>
+
+    <!--MyFragment-->
+    <string name="app_not_activity">未激活</string>
+    <string name="app_activitied">已激活</string>
+    <string name="app_msg_center">消息中心</string>
+    <string name="app_recruit_friend">招募好友</string>
+    <string name="app_service_center">客服中心</string>
+    <string name="app_language_setting">语言设置</string>
+    <string name="app_safe_center">安全中心</string>
+    <string name="app_logout">退出登录</string>
+    <string name="app_user_info">个人信息</string>
+    <string name="app_avatar">头像</string>
+    <string name="app_nick">昵称</string>
+
+    <!--SafeCenterFragment-->
+    <string name="app_mobile_number">手机号码</string>
+    <string name="app_email_address">邮箱地址</string>
+    <string name="app_login_password">登录密码</string>
+    <string name="app_pay_password">支付密码</string>
+    <string name="app_not_setting">未设置</string>
+    <string name="app_modify">修改</string>
+    <string name="app_modify_nick">修改昵称</string>
+    <string name="app_please_input_nick">请输入昵称</string>
+    <string name="app_take_photo">拍照</string>
+    <string name="app_select_from_album">从手机相册选择</string>
+    <string name="app_cancel">取消</string>
+
+    <!--BindEmailFragment-->
+    <string name="app_bind_email">绑定邮箱</string>
+    <string name="app_please_input_bind_email">请输入要绑定的邮箱地址</string>
+    <string name="app_modify_login_password">修改登录密码</string>
+    <string name="app_old_password">原密码</string>
+    <string name="app_please_input_old_password">请输入原登录密码</string>
+    <string name="app_please_input_new_login_password">请输入新登录密码</string>
+    <string name="app_please_input_new_login_password_again">再次输入新登录密码</string>
+    <string name="app_set_new_password">设置新密码</string>
+    <string name="app_set_pay_password">设置交易密码</string>
+    <string name="app_trade_password">交易密码</string>
+    <string name="app_sure_trade_password">确认交易密码</string>
+    <string name="app_please_input_trade_password">请输入交易密码</string>
+    <string name="app_please_input_sure_trade_password">请输入确认交易密码</string>
 </resources>
