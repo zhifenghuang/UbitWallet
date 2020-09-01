@@ -13,6 +13,7 @@ import com.ubit.wallet.R;
 import com.ubit.wallet.activity.BaseActivity;
 import com.ubit.wallet.activity.CaptureActivity;
 import com.ubit.wallet.bean.AssetsBean;
+import com.ubit.wallet.dialog.InputPasswordDialog;
 import com.ubit.wallet.event.CaptureEvent;
 import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
@@ -113,7 +114,6 @@ public class TransferFragment extends BaseFragment {
             case R.id.tvTransfer:
                 String moneyStr = getTextById(R.id.etTransferMoney);
                 String receiveUrl = getTextById(R.id.etAddress);
-                int symbol = getIndexByType(mCurrentAsset.getName());
                 if (TextUtils.isEmpty(moneyStr)) {
                     showToast(R.string.app_input_transfer_number);
                     return;
@@ -135,18 +135,15 @@ public class TransferFragment extends BaseFragment {
                         return;
                     }
                 }
-                HttpMethods.getInstance().transfer(DataManager.getInstance().getMyInfo().getToken(),
-                        moneyStr, receiveUrl, mCurrentAsset.getAddress(), String.valueOf(symbol), mFeeDecimal.toString(),
-                        new HttpObserver(new SubscriberOnNextListener() {
-                            @Override
-                            public void onNext(Object o, String msg) {
-                                if (getActivity() == null || getView() == null) {
-                                    return;
-                                }
-                                showToast(getString(R.string.app_transfering));
-                                getActivity().finish();
-                            }
-                        }, getActivity(), (BaseActivity) getActivity()));
+                InputPasswordDialog dialog = new InputPasswordDialog(getActivity());
+                dialog.setOnInputPasswordListener(new InputPasswordDialog.OnInputPasswordListener() {
+                    @Override
+                    public void afterCheckPassword() {
+                        int symbol = getIndexByType(mCurrentAsset.getName());
+                        transfer(moneyStr, receiveUrl, String.valueOf(symbol));
+                    }
+                });
+                dialog.show();
                 break;
             case R.id.tvAll:
                 String amount = mCurrentAsset.getAmount();
@@ -161,8 +158,23 @@ public class TransferFragment extends BaseFragment {
         }
     }
 
+    private void transfer(String moneyStr, String receiveUrl, String symbol) {
+        HttpMethods.getInstance().transfer(DataManager.getInstance().getToken(),
+                moneyStr, receiveUrl, mCurrentAsset.getAddress(), symbol, mFeeDecimal.toString(),
+                new HttpObserver(new SubscriberOnNextListener() {
+                    @Override
+                    public void onNext(Object o, String msg) {
+                        if (getActivity() == null || getView() == null) {
+                            return;
+                        }
+                        showToast(getString(R.string.app_transfering));
+                        getActivity().finish();
+                    }
+                }, getActivity(), (BaseActivity) getActivity()));
+    }
+
     private void getTransferFee() {
-        HttpMethods.getInstance().get_fee(DataManager.getInstance().getMyInfo().getToken(),
+        HttpMethods.getInstance().get_fee(DataManager.getInstance().getToken(),
                 new HttpObserver(new SubscriberOnNextListener<HashMap<String, String>>() {
                     @Override
                     public void onNext(HashMap<String, String> map, String msg) {

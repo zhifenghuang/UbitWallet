@@ -13,7 +13,6 @@ import com.ubit.wallet.activity.BaseActivity;
 import com.ubit.wallet.activity.MainActivity;
 import com.ubit.wallet.bean.PhoneCodeBean;
 import com.ubit.wallet.bean.PicCodeResultBean;
-import com.ubit.wallet.bean.UserBean;
 import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
 import com.ubit.wallet.http.OnHttpErrorListener;
@@ -21,6 +20,8 @@ import com.ubit.wallet.http.SubscriberOnNextListener;
 import com.ubit.wallet.manager.DataManager;
 import com.ubit.wallet.utils.BitmapUtil;
 import com.ubit.wallet.utils.MD5Utils;
+
+import java.util.HashMap;
 
 public class LoginFragment extends BaseFragment {
 
@@ -115,15 +116,17 @@ public class LoginFragment extends BaseFragment {
                     return;
                 }
                 HttpMethods.getInstance().login(name, MD5Utils.encryptMD5(password), code, mSid, mPhoneCode,
-                        new HttpObserver(new SubscriberOnNextListener<UserBean>() {
+                        new HttpObserver(new SubscriberOnNextListener<HashMap<String, String>>() {
                             @Override
-                            public void onNext(UserBean bean, String msg) {
+                            public void onNext(HashMap<String, String> map, String msg) {
                                 if (getActivity() == null || getView() == null) {
                                     return;
                                 }
-                                DataManager.getInstance().saveMyInfo(bean);
-                                gotoPager(MainActivity.class);
-                                ((BaseActivity) getActivity()).finishAllActivity();
+                                if (map != null && map.containsKey("token")) {
+                                    DataManager.getInstance().saveToken(map.get("token"));
+                                    gotoPager(MainActivity.class);
+                                    ((BaseActivity) getActivity()).finishAllActivity();
+                                }
                             }
                         }, getActivity(), new OnHttpErrorListener() {
                             @Override

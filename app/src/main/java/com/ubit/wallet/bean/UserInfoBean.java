@@ -33,6 +33,15 @@ public class UserInfoBean implements Serializable {
         private String total_tth;
         private String available_tth;
         private String done_tth;
+        private int hasPayPsw;
+
+        public int getHasPayPsw() {
+            return hasPayPsw;
+        }
+
+        public void setHasPayPsw(int hasPayPsw) {
+            this.hasPayPsw = hasPayPsw;
+        }
 
         public String getUname() {
             return uname;

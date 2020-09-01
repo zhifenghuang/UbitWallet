@@ -239,6 +239,68 @@ public class HttpMethods {
         toSubscribe(observable, observer);
     }
 
+    /**
+     * @param token
+     * @param phone
+     * @param phone_code
+     * @param code
+     * @param observer
+     */
+    public void bind_phone(String token, String phone, String phone_code, String code, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.bind_phone(token, phone, phone_code, code);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     * @param token
+     * @param email
+     * @param sid
+     * @param code
+     * @param observer
+     */
+    public void bind_email(String token, String email, String sid, String code, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.bind_email(token, email, sid, code);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     * @param token
+     * @param oldPsw
+     * @param newPaw
+     * @param newPaw2
+     * @param observer
+     */
+    public void modify_login_password(String token, String oldPsw, String newPaw, String newPaw2, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.modify_login_password(token, oldPsw, newPaw, newPaw2);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     * @param token
+     * @param newPaw
+     * @param newPaw2
+     * @param observer
+     */
+    public void modify_pay_password(String token, String newPaw, String newPaw2, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.modify_pay_password(token, newPaw, newPaw2);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     *
+     * @param token
+     * @param psw
+     * @param observer
+     */
+    public void check_pay_password(String token, String psw, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.check_pay_password(token, psw);
+        toSubscribe(observable, observer);
+    }
 
     private <T> void toSubscribe(Observable<T> o, HttpObserver s) {
         o.retry(2, new Predicate<Throwable>() {

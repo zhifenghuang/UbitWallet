@@ -1,6 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"></FrameLayout>
+    android:background="@color/color_ff_ff_ff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_e2_eb_f0" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/tvSymbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/color_07_bb_99"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="2dp"
+                    android:text="69033.48"
+                    android:textColor="@color/color_00_cf_7c"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll0"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:id="@+id/tvEqualValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="≈￥9760.96"
+                    android:textColor="@color/color_00_00_00"
+                    android:textSize="11dp" />
+
+
+                <TextView
+                    android:id="@+id/tvRose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="3dp"
+                    android:text="+￥469.53 +0.68%"
+                    android:textColor="@color/color_00_cf_7c"
+                    android:textSize="11dp" />
+
+                <TextView
+                    android:id="@+id/tvTotalValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总市值 $1.20万亿"
+                    android:textColor="@color/color_00_00_00"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/ll1"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/centerLine"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_f8_f8_f8" />
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll1"
+                android:layout_toLeftOf="@id/centerLine"
+                android:paddingRight="28dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24H高\n24H低\n初始价格\n历史最高"
+                    android:textColor="@color/color_66_66_66"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="￥69330.52\n￥69330.72\n$0.0025\n￥142077.44"
+                    android:textColor="@color/color_00_00_00"
+                    android:textSize="10dp" />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll1"
+                android:layout_toRightOf="@id/centerLine"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingLeft="27dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24H量\n24H额\n24H换手\n历史最低"
+                    android:textColor="@color/color_66_66_66"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="112.61万BTC\n￥777.17亿\n6.17%\n￥463.42"
+                    android:textColor="@color/color_00_00_00"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll2"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="23dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/shape_stroke_07bb99_11"
+                        android:gravity="center"
+                        android:text="24H"
+                        android:textColor="@color/color_00_cf_7c"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="+0.69%"
+                        android:textColor="@color/color_00_cf_7c"
+                        android:textSize="9dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="23dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="1月"
+                        android:textColor="@color/color_66_66_66"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="+0.69%"
+                        android:textColor="@color/color_00_cf_7c"
+                        android:textSize="9dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="23dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="1年"
+                        android:textColor="@color/color_66_66_66"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="+0.69%"
+                        android:textColor="@color/color_00_cf_7c"
+                        android:textSize="9dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="23dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="所有"
+                        android:textColor="@color/color_66_66_66"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="+0.69%"
+                        android:textColor="@color/color_00_cf_7c"
+                        android:textSize="9dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="23dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="1周"
+                        android:textColor="@color/color_66_66_66"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="24H"
+                        android:textColor="@color/color_00_cf_7c"
+                        android:textSize="9dp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line0"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/ll3"
+                android:layout_marginTop="13dp"
+                android:background="@color/color_f8_f8_f8" />
+
+            <View
+                android:id="@+id/quotationView"
+                android:layout_width="match_parent"
+                android:layout_height="236dp"
+                android:layout_below="@id/line0"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@id/quotationView"
+                android:background="@color/color_f8_f8_f8"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                app:tabIndicatorColor="@color/color_00_cf_7c"
+                app:tabIndicatorHeight="1.5dp"
+                android:layout_below="@id/quotationView"
+                android:layout_marginTop="10dp"
+                app:tabSelectedTextColor="@color/color_00_cf_7c"
+                app:tabTextColor="@color/color_00_00_00" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tab_layout"
+                android:background="@color/color_f8_f8_f8" />
+
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/line1"/>
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

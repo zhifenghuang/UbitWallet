@@ -96,7 +96,7 @@ public class AssetsFragment extends BaseFragment {
 
 
     private void getAssetsInfo() {
-        HttpMethods.getInstance().get_assets(DataManager.getInstance().getMyInfo().getToken(),
+        HttpMethods.getInstance().get_assets(DataManager.getInstance().getToken(),
                 new HttpObserver(new SubscriberOnNextListener<AssetsBean>() {
                     @Override
                     public void onNext(AssetsBean bean, String msg) {

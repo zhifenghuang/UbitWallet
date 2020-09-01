@@ -4,7 +4,6 @@ import com.ubit.wallet.bean.AssetsBean;
 import com.ubit.wallet.bean.BasicResponse;
 import com.ubit.wallet.bean.PhoneCodeBean;
 import com.ubit.wallet.bean.PicCodeResultBean;
-import com.ubit.wallet.bean.UserBean;
 import com.ubit.wallet.bean.UserInfoBean;
 
 import java.util.HashMap;
@@ -46,12 +45,12 @@ public interface HttpService {
      */
     @FormUrlEncoded
     @POST("api/v1/register2")
-    Observable<BasicResponse<UserBean>> register2(@Field("uid") String uid,
-                                                  @Field("pwd") String pwd,
-                                                  @Field("pwd2") String pwd2,
-                                                  @Field("invit_code") String invit_code,
-                                                  @Field("code") String code,
-                                                  @Field("sid") String sid);
+    Observable<BasicResponse<HashMap<String, String>>> register2(@Field("uid") String uid,
+                                                                 @Field("pwd") String pwd,
+                                                                 @Field("pwd2") String pwd2,
+                                                                 @Field("invit_code") String invit_code,
+                                                                 @Field("code") String code,
+                                                                 @Field("sid") String sid);
 
     /**
      * 获取邮箱验证码
@@ -102,11 +101,11 @@ public interface HttpService {
      */
     @FormUrlEncoded
     @POST("api/v1/login")
-    Observable<BasicResponse<UserBean>> login(@Field("name") String name,
-                                              @Field("password") String password,
-                                              @Field("code") String code,
-                                              @Field("sid") String sid,
-                                              @Field("phone_code") String phone_code);
+    Observable<BasicResponse<HashMap<String, String>>> login(@Field("name") String name,
+                                                             @Field("password") String password,
+                                                             @Field("code") String code,
+                                                             @Field("sid") String sid,
+                                                             @Field("phone_code") String phone_code);
 
     /**
      * 资产页面
@@ -148,4 +147,63 @@ public interface HttpService {
                                        @Field("from_address") String from_address,
                                        @Field("symbol") String symbol,
                                        @Field("fee") String fee);
+
+    /**
+     * 绑定或更换手机号
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/bang_phone")
+    Observable<BasicResponse> bind_phone(@Field("token") String token,
+                                         @Field("phone") String phone,
+                                         @Field("phone_code") String phone_code,
+                                         @Field("code") String code);
+
+    /**
+     * 更换或绑定邮箱
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/bang_email")
+    Observable<BasicResponse> bind_email(@Field("token") String token,
+                                         @Field("email") String email,
+                                         @Field("sid") String sid,
+                                         @Field("code") String code);
+
+    /**
+     * 修改登录密码
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/save_pwd")
+    Observable<BasicResponse> modify_login_password(@Field("token") String token,
+                                                    @Field("old_pwd") String old_pwd,
+                                                    @Field("new_pwd") String new_pwd,
+                                                    @Field("new_pwd2") String new_pwd2);
+
+    /**
+     * 设置支付密码
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/save_pay")
+    Observable<BasicResponse> modify_pay_password(@Field("token") String token,
+                                                  @Field("pay_pwd") String pay_pwd,
+                                                  @Field("pay_pwd2") String pay_pwd2);
+
+
+    /**
+     * 校验支付密码
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/check_pay")
+    Observable<BasicResponse> check_pay_password(@Field("token") String token,
+                                                  @Field("pwd") String pwd);
+
 }

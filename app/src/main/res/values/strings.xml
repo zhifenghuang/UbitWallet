@@ -133,19 +133,35 @@
     <string name="app_take_photo">拍照</string>
     <string name="app_select_from_album">从手机相册选择</string>
     <string name="app_cancel">取消</string>
+    <string name="app_bind_email_success">绑定邮箱成功</string>
+    <string name="app_bind_phone_success">绑定手机号成功</string>
+    <string name="app_modify_password_success">修改密码成功</string>
+    <string name="app_set_password_success">设置密码成功</string>
 
     <!--BindEmailFragment-->
     <string name="app_bind_email">绑定邮箱</string>
+    <string name="app_bind_phone">绑定手机号</string>
     <string name="app_please_input_bind_email">请输入要绑定的邮箱地址</string>
     <string name="app_modify_login_password">修改登录密码</string>
     <string name="app_old_password">原密码</string>
     <string name="app_please_input_old_password">请输入原登录密码</string>
     <string name="app_please_input_new_login_password">请输入新登录密码</string>
     <string name="app_please_input_new_login_password_again">再次输入新登录密码</string>
+    <string name="app_new_password_not_equal_check_password">新密码与确认密码不一致</string>
     <string name="app_set_new_password">设置新密码</string>
     <string name="app_set_pay_password">设置交易密码</string>
     <string name="app_trade_password">交易密码</string>
     <string name="app_sure_trade_password">确认交易密码</string>
     <string name="app_please_input_trade_password">请输入交易密码</string>
     <string name="app_please_input_sure_trade_password">请输入确认交易密码</string>
+    <string name="app_pay_password_not_equal_check_password">交易密码与确认密码不一致</string>
+    <string name="app_pay_psw_tip">密码用于交易操作时，验证您的身份！</string>
+
+    <!--QuotatationFragment-->
+    <string name="app_trade_record">成交记录</string>
+    <string name="app_simple_intro">简介</string>
+    <string name="app_history_data">历史数据</string>
+    <string name="app_direction">方向</string>
+    <string name="app_price_usdt">价格(USDT)</string>
+    <string name="app_num_usdt">数量(USDT)</string>
 </resources>

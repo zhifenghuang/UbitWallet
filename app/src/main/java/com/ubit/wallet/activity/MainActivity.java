@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void getUserInfo() {
-        HttpMethods.getInstance().get_user(DataManager.getInstance().getMyInfo().getToken(),
+        HttpMethods.getInstance().get_user(DataManager.getInstance().getToken(),
                 new HttpObserver(new SubscriberOnNextListener<UserInfoBean>() {
                     @Override
                     public void onNext(UserInfoBean bean, String msg) {

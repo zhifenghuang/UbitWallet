@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.ubit.wallet.bean.AssetsBean;
-import com.ubit.wallet.bean.UserBean;
 import com.ubit.wallet.bean.UserInfoBean;
 
 import java.lang.reflect.Type;
@@ -17,8 +16,6 @@ public class DataManager {
     private Object mObject;
 
     private Gson mGson;
-
-    private UserBean mMyInfo;
 
     private DataManager() {
 
@@ -42,22 +39,14 @@ public class DataManager {
         return mGson;
     }
 
-    public void saveMyInfo(UserBean bean) {
-        mMyInfo = bean;
-        Preferences.getInstacne().setValues("userBean", bean == null ? "" : getGson().toJson(bean));
+    public String getToken() {
+        return Preferences.getInstacne().getValues("token", "");
     }
 
-    public UserBean getMyInfo() {
-        if (mMyInfo != null) {
-            return mMyInfo;
-        }
-        String str = Preferences.getInstacne().getValues("userBean", "");
-        if (TextUtils.isEmpty(str)) {
-            return null;
-        }
-        mMyInfo = getGson().fromJson(str, UserBean.class);
-        return mMyInfo;
+    public void saveToken(String token) {
+        Preferences.getInstacne().setValues("token", token == null ? "" : token);
     }
+
 
     public void saveMyAssets(AssetsBean bean) {
         Preferences.getInstacne().setValues("assets", bean == null ? "" : getGson().toJson(bean));
@@ -85,8 +74,7 @@ public class DataManager {
 
 
     public void loginOut() {
-        mMyInfo = null;
-        saveMyInfo(null);
+        saveToken(null);
         saveMyAssets(null);
         saveUserInfo(null);
     }
