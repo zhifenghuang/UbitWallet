@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="13dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="13dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="4dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/app_notification" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="关于社区节点升级公告"
+                android:textColor="@color/color_22_22_22"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="2020年12月19日   17:20"
+            android:textColor="@color/color_66_66_66"
+            android:textSize="12dp" />
+
+
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingRight="35dp"
+            android:text="今夜夜间有阵雨，最低温度15度。预计明天白天\n最高温度为34度。点击查看更多详情 >"
+            android:textColor="@color/color_66_66_66"
+            android:textSize="13dp" />
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

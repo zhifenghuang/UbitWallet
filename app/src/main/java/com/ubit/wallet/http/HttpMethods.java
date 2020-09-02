@@ -291,7 +291,6 @@ public class HttpMethods {
     }
 
     /**
-     *
      * @param token
      * @param psw
      * @param observer
@@ -299,6 +298,23 @@ public class HttpMethods {
     public void check_pay_password(String token, String psw, HttpObserver observer) {
         HttpService httpService = mRetrofit.create(HttpService.class);
         Observable observable = httpService.check_pay_password(token, psw);
+        toSubscribe(observable, observer);
+    }
+
+    public void get_data_category(HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.data_category();
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     * @param token
+     * @param type
+     * @param observer
+     */
+    public void data_list(String token, String type, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.data_list(token, type);
         toSubscribe(observable, observer);
     }
 

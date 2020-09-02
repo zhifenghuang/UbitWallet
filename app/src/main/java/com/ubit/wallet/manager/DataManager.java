@@ -3,10 +3,13 @@ package com.ubit.wallet.manager;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.ubit.wallet.bean.AssetsBean;
+import com.ubit.wallet.bean.DataTypeBean;
 import com.ubit.wallet.bean.UserInfoBean;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class DataManager {
 
@@ -70,6 +73,19 @@ public class DataManager {
             return null;
         }
         return getGson().fromJson(str, UserInfoBean.Info.class);
+    }
+
+    public void saveDataType(ArrayList<DataTypeBean.DataType> list) {
+        Preferences.getInstacne().setValues("data_type", list == null ? "" : getGson().toJson(list));
+    }
+
+    public ArrayList<DataTypeBean.DataType> getDataTypes() {
+        String str = Preferences.getInstacne().getValues("data_type", "");
+        if (TextUtils.isEmpty(str)) {
+            return new ArrayList<>();
+        }
+        return getGson().fromJson(str, new TypeToken<ArrayList<DataTypeBean.DataType>>() {
+        }.getType());
     }
 
 

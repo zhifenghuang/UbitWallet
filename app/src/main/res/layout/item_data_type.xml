@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="3dp"
+        android:text="@string/app_hot_question"
+        android:textColor="@color/color_00_00_00"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="23dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shape_00cf7c_1" />
+
+</LinearLayout>

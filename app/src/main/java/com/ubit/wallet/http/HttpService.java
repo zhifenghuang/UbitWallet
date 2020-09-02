@@ -1,7 +1,10 @@
 package com.ubit.wallet.http;
 
+import com.ubit.wallet.bean.ArticleBean;
 import com.ubit.wallet.bean.AssetsBean;
 import com.ubit.wallet.bean.BasicResponse;
+import com.ubit.wallet.bean.DataTypeBean;
+import com.ubit.wallet.bean.ListBean;
 import com.ubit.wallet.bean.PhoneCodeBean;
 import com.ubit.wallet.bean.PicCodeResultBean;
 import com.ubit.wallet.bean.UserInfoBean;
@@ -205,5 +208,25 @@ public interface HttpService {
     @POST("api/user/v1/check_pay")
     Observable<BasicResponse> check_pay_password(@Field("token") String token,
                                                   @Field("pwd") String pwd);
+
+
+    /**
+     * 资料类型
+     *
+     * @return
+     */
+    @GET("api/article/v1/category")
+    Observable<BasicResponse<DataTypeBean>> data_category();
+
+
+    /**
+     * 资料列表
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/article/v1/list")
+    Observable<BasicResponse<ListBean<ArticleBean>>> data_list(@Field("token") String token,
+                                                               @Field("type") String type);
 
 }

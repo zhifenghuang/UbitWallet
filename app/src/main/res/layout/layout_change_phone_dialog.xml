@@ -18,13 +18,12 @@
 
 
         <TextView
-            android:id="@+id/tvTakePhoto"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
-            android:text="@string/app_take_photo"
-            android:textColor="@color/color_00_00_00"
-            android:textSize="15dp" />
+            android:text="@string/app_mobile_number"
+            android:textColor="@color/color_b2_b2_b2"
+            android:textSize="13dp" />
 
 
         <View
@@ -32,14 +31,14 @@
             android:layout_height="0.5dp"
             android:layout_marginLeft="13dp"
             android:layout_marginRight="13dp"
-            android:background="@color/color_f8_f8_f8" />
+            android:background="@color/color_e2_eb_f0" />
 
         <TextView
-            android:id="@+id/tvAlbum"
+            android:id="@+id/tvChange"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
-            android:text="@string/app_select_from_album"
+            android:text="@string/app_change"
             android:textColor="@color/color_00_00_00"
             android:textSize="15dp" />
 

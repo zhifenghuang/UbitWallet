@@ -51,14 +51,14 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textColor="@color/color_07_bb_99"
+                android:textColor="@color/color_ff_5e_5a"
                 android:textSize="13dp" />
 
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center_vertical"
-                android:background="@color/color_e1_eb_ef" />
+                android:background="@color/color_e2_eb_f0" />
 
             <TextView
                 android:id="@+id/btn2"

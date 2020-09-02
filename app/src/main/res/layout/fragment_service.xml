@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ff_ff_ff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onBackClick"
+            android:paddingLeft="26dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/app_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_service_online"
+            android:textColor="@color/color_00_00_00"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_f8_f8_f8" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="17dp">
+
+        <ImageView
+            android:id="@+id/ivFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/app_folder" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/app_camera" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/app_photo" />
+
+        <EditText
+            android:id="@+id/etChat"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_f8f8f8_stroke_e7e7e9_4"
+            android:singleLine="true"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:textColor="@color/color_00_00_00"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tvSend"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="7dp"
+            android:background="@drawable/shape_00cf7c_4"
+            android:gravity="center"
+            android:minWidth="50dp"
+            android:text="@string/app_send"
+            android:textColor="@color/color_ff_ff_ff"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,11 +1,14 @@
 package com.ubit.wallet.fragment;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.ubit.wallet.R;
 import com.ubit.wallet.bean.UserInfoBean;
+import com.ubit.wallet.dialog.MyDialogFragment;
 import com.ubit.wallet.manager.DataManager;
+import com.ubit.wallet.utils.Constants;
 
 public class SafeCenterFragment extends BaseFragment {
     @Override
@@ -31,7 +34,14 @@ public class SafeCenterFragment extends BaseFragment {
         int id = v.getId();
         switch (id) {
             case R.id.llMobile:
-                gotoPager(BindPhoneFragment.class);
+                final UserInfoBean.Info myInfo = DataManager.getInstance().getUserInfo();
+                if (TextUtils.isEmpty(myInfo.getPhone())) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(Constants.BUNDLE_EXTRA, 0);
+                    gotoPager(BindPhoneFragment.class, bundle);
+                } else {
+                    showChangeMobileDialog();
+                }
                 break;
             case R.id.llEmail:
                 gotoPager(BindEmailFragment.class);
@@ -43,5 +53,29 @@ public class SafeCenterFragment extends BaseFragment {
                 gotoPager(SetPayPasswordFragment.class);
                 break;
         }
+    }
+
+    private void showChangeMobileDialog() {
+        final MyDialogFragment dialogFragment = new MyDialogFragment(R.layout.layout_change_phone_dialog);
+        dialogFragment.setOnMyDialogListener(new MyDialogFragment.OnMyDialogListener() {
+            @Override
+            public void initView(View view) {
+                dialogFragment.setDialogViewsOnClickListener(view, R.id.paddingView,
+                        R.id.tvCancel,
+                        R.id.tvChange);
+            }
+
+            @Override
+            public void onViewClick(int viewId) {
+                switch (viewId) {
+                    case R.id.tvChange:
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(Constants.BUNDLE_EXTRA, 1);
+                        gotoPager(BindPhoneFragment.class, bundle);
+                        break;
+                }
+            }
+        });
+        dialogFragment.show(getActivity().getSupportFragmentManager(), "MyDialogFragment");
     }
 }

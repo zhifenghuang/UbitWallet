@@ -11,6 +11,7 @@ import com.ubit.wallet.http.HttpMethods;
 import com.ubit.wallet.http.HttpObserver;
 import com.ubit.wallet.http.SubscriberOnNextListener;
 import com.ubit.wallet.manager.DataManager;
+import com.ubit.wallet.utils.Constants;
 import com.ubit.wallet.utils.CountDownUtil;
 
 public class BindPhoneFragment extends BaseFragment {
@@ -26,6 +27,8 @@ public class BindPhoneFragment extends BaseFragment {
     @Override
     protected void onViewCreated(View view) {
         setViewsOnClickListener(R.id.tvGetCode, R.id.tvOk, R.id.tvPhoneCode);
+        int type = getArguments().getInt(Constants.BUNDLE_EXTRA, 0);
+        setText(R.id.tvTitle, type == 0 ? R.string.app_bind_phone : R.string.app_change_phone);
     }
 
 

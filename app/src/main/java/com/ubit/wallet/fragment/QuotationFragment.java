@@ -26,8 +26,8 @@ public class QuotationFragment extends BaseFragment {
         ViewPager viewPager = view.findViewById(R.id.viewPager);
         mFragments = new ArrayList<>();
         mFragments.add(new QuotationRecordFragment());
-        mFragments.add(new DataFragment());
-        mFragments.add(new DataFragment());
+        mFragments.add(new TradeFragment());
+        mFragments.add(new TradeFragment());
         String[] titles = new String[]{getString(R.string.app_trade_record),
                 getString(R.string.app_simple_intro),
                 getString(R.string.app_history_data)};

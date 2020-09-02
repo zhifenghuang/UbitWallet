@@ -115,11 +115,24 @@
     <string name="app_recruit_friend">招募好友</string>
     <string name="app_service_center">客服中心</string>
     <string name="app_language_setting">语言设置</string>
+    <string name="app_language_type_0">简体中文</string>
+    <string name="app_language_type_1">English</string>
     <string name="app_safe_center">安全中心</string>
     <string name="app_logout">退出登录</string>
     <string name="app_user_info">个人信息</string>
     <string name="app_avatar">头像</string>
     <string name="app_nick">昵称</string>
+    <string name="app_are_you_sure_logout">是否确定退出登录</string>
+    <string name="app_service_online">在线客服</string>
+    <string name="app_send">发送</string>
+    <string name="app_invite_code_xxx">邀请码：%1$s</string>
+    <string name="app_account">账号</string>
+    <string name="app_activity_state">激活状态</string>
+    <string name="app_rest_balance">余额</string>
+    <string name="app_yes">是</string>
+    <string name="app_no">否</string>
+    <string name="app_save_poster">保存海报 邀请好友</string>
+    <string name="app_register_link_xxx">注册链接：%1$s</string>
 
     <!--SafeCenterFragment-->
     <string name="app_mobile_number">手机号码</string>
@@ -131,6 +144,7 @@
     <string name="app_modify_nick">修改昵称</string>
     <string name="app_please_input_nick">请输入昵称</string>
     <string name="app_take_photo">拍照</string>
+    <string name="app_change">更换</string>
     <string name="app_select_from_album">从手机相册选择</string>
     <string name="app_cancel">取消</string>
     <string name="app_bind_email_success">绑定邮箱成功</string>
@@ -141,6 +155,7 @@
     <!--BindEmailFragment-->
     <string name="app_bind_email">绑定邮箱</string>
     <string name="app_bind_phone">绑定手机号</string>
+    <string name="app_change_phone">更换手机号</string>
     <string name="app_please_input_bind_email">请输入要绑定的邮箱地址</string>
     <string name="app_modify_login_password">修改登录密码</string>
     <string name="app_old_password">原密码</string>
@@ -156,6 +171,7 @@
     <string name="app_please_input_sure_trade_password">请输入确认交易密码</string>
     <string name="app_pay_password_not_equal_check_password">交易密码与确认密码不一致</string>
     <string name="app_pay_psw_tip">密码用于交易操作时，验证您的身份！</string>
+    <string name="app_psw_tip">密码至少8个字符，而且同时包含字母和数字</string>
 
     <!--QuotatationFragment-->
     <string name="app_trade_record">成交记录</string>
@@ -164,4 +180,11 @@
     <string name="app_direction">方向</string>
     <string name="app_price_usdt">价格(USDT)</string>
     <string name="app_num_usdt">数量(USDT)</string>
+
+    <!--DataFragment-->
+    <string name="app_data_center">资料中心</string>
+    <string name="app_apply_service_anytime">随时随地为您提供服务</string>
+    <string name="app_hot_question">热门问题</string>
+    <string name="app_safe_relative">安全相关</string>
+    <string name="app_contact_service">联系客服</string>
 </resources>
