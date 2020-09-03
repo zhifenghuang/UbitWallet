@@ -229,4 +229,24 @@ public interface HttpService {
     Observable<BasicResponse<ListBean<ArticleBean>>> data_list(@Field("token") String token,
                                                                @Field("type") String type);
 
+    /**
+     * 修改昵称
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/nikename")
+    Observable<BasicResponse<ListBean<ArticleBean>>> updateNick(@Field("token") String token,
+                                                               @Field("name") String name);
+
+    /**
+     * 上传头像
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/user/v1/logo")
+    Observable<BasicResponse<ListBean<ArticleBean>>> updateAvatar(@Field("token") String token,
+                                                                @Field("logo") String logo);
+
 }

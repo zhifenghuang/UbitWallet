@@ -9,6 +9,7 @@ import com.ubit.wallet.activity.BaseActivity;
 import com.ubit.wallet.bean.UserInfoBean;
 import com.ubit.wallet.dialog.MyDialogFragment;
 import com.ubit.wallet.manager.DataManager;
+import com.ubit.wallet.utils.Utils;
 
 public class MyFragment extends BaseFragment {
     @Override
@@ -25,6 +26,8 @@ public class MyFragment extends BaseFragment {
     public void updateUIText() {
         final UserInfoBean.Info myInfo = DataManager.getInstance().getUserInfo();
         setText(R.id.tvMobile, TextUtils.isEmpty(myInfo.getPhone()) ? myInfo.getEmail() : "+" + myInfo.getPhone_code() + " " + myInfo.getPhone());
+        setText(R.id.tvNick, myInfo.getNickname());
+        Utils.displayAvatar(getActivity(), R.drawable.shape_000000_circle, myInfo.getAvatar(), fv(R.id.ivAvatar));
     }
 
     @Override

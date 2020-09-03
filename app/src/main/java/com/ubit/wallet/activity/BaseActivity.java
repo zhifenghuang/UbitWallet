@@ -113,8 +113,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnHttpEr
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermission(0,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_PHONE_STATE);
+                    Manifest.permission.READ_EXTERNAL_STORAGE);
         }
     }
 

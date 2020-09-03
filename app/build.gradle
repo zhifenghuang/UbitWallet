@@ -86,4 +86,6 @@ dependencies {
     api 'com.yangy:YZxing-lib:2.1'
     api 'com.blankj:utilcodex:1.26.0'
 
+    api 'com.upyun:upyun-android-sdk:2.1.2'
+
 }

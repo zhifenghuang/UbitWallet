@@ -143,6 +143,9 @@
     <string name="app_modify">修改</string>
     <string name="app_modify_nick">修改昵称</string>
     <string name="app_please_input_nick">请输入昵称</string>
+    <string name="app_update_nick_success">修改昵称成功</string>
+    <string name="app_upload_avatar_success">修改头像成功</string>
+    <string name="app_upload_avatar_failed">修改头像失败</string>
     <string name="app_take_photo">拍照</string>
     <string name="app_change">更换</string>
     <string name="app_select_from_album">从手机相册选择</string>

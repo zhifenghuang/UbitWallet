@@ -34,6 +34,15 @@ public class UserInfoBean implements Serializable {
         private String available_tth;
         private String done_tth;
         private int hasPayPsw;
+        private String nickname;
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
 
         public int getHasPayPsw() {
             return hasPayPsw;

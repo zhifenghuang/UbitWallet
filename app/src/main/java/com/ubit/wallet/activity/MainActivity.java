@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ubit.wallet.R;
-import com.ubit.wallet.bean.AssetsBean;
 import com.ubit.wallet.bean.UserInfoBean;
 import com.ubit.wallet.fragment.AssetsFragment;
 import com.ubit.wallet.fragment.BaseFragment;

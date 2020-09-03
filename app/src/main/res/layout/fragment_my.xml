@@ -16,8 +16,7 @@
             android:id="@+id/ivAvatar"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:src="@mipmap/ic_launcher_round" />
+            android:layout_alignParentBottom="true" />
 
         <TextView
             android:id="@+id/tvNick"

@@ -48,12 +48,13 @@
             android:text="@string/app_avatar"
             android:textColor="@color/color_00_00_00"
             android:textSize="15dp" />
-        
+
         <ImageView
+            android:id="@+id/ivAvatar"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_launcher_round"/>
+            android:src="@drawable/shape_000000_circle" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -92,7 +93,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="兴奋的大马猴"
             android:textColor="@color/color_b2_b2_b2"
             android:textSize="14dp" />
 

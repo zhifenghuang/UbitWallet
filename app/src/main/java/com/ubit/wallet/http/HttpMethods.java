@@ -318,6 +318,30 @@ public class HttpMethods {
         toSubscribe(observable, observer);
     }
 
+    /**
+     *
+     * @param token
+     * @param nick
+     * @param observer
+     */
+    public void updateNick(String token, String nick, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.updateNick(token, nick);
+        toSubscribe(observable, observer);
+    }
+
+    /**
+     *
+     * @param token
+     * @param avatarBase64
+     * @param observer
+     */
+    public void updateAvatar(String token, String avatarBase64, HttpObserver observer) {
+        HttpService httpService = mRetrofit.create(HttpService.class);
+        Observable observable = httpService.updateAvatar(token, avatarBase64);
+        toSubscribe(observable, observer);
+    }
+
     private <T> void toSubscribe(Observable<T> o, HttpObserver s) {
         o.retry(2, new Predicate<Throwable>() {
             @Override
